@@ -1,195 +1,255 @@
-local AttackHubuiV1 = Instance.new("ScreenGui")
-local Hee = Instance.new("TextButton")
-local UICorner = Instance.new("UICorner")
+local UIKAITUN = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local ToFrame = Instance.new("Frame")
 local UICorner_2 = Instance.new("UICorner")
-local MainNew = Instance.new("ImageLabel")
-local Name = Instance.new("TextLabel")
-local FRA = Instance.new("Frame")
-local Tap1 = Instance.new("ImageButton")
+local SeaFrame = Instance.new("Frame")
 local UICorner_3 = Instance.new("UICorner")
-local Page1 = Instance.new("ScrollingFrame")
-local Toggle1 = Instance.new("TextButton")
-local Frame = Instance.new("Frame")
-local Toggle1_2 = Instance.new("TextButton")
-local Frame_2 = Instance.new("Frame")
-local Hum = Instance.new("TextButton")
+local NameHub = Instance.new("TextLabel")
 local UICorner_4 = Instance.new("UICorner")
-AttackHubuiV1.Name = "Attack Hub ui V1"
-AttackHubuiV1.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-AttackHubuiV1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Hee.Name = "Hee"
-Hee.Parent = AttackHubuiV1
-Hee.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Hee.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Hee.BorderSizePixel = 0
-Hee.Position = UDim2.new(0, 0, 0.278551519, 0)
-Hee.Size = UDim2.new(0.0833508298, 0, 0.137902439, 0)
-Hee.Font = Enum.Font.SourceSans
-Hee.Text = ""
-Hee.TextColor3 = Color3.fromRGB(0, 0, 0)
-Hee.TextSize = 14.000
-
-UICorner.Parent = Hee
+local MenuFrame = Instance.new("Frame")
+local UICorner_5 = Instance.new("UICorner")
+local Name = Instance.new("TextLabel")
+local Lv = Instance.new("TextLabel")
+local RACE = Instance.new("TextLabel")
+local BELI = Instance.new("TextLabel")
+local Health = Instance.new("TextLabel")
+local ReFrame = Instance.new("Frame")
+local UICorner_6 = Instance.new("UICorner")
+local ImageLabel = Instance.new("ImageLabel")
+local ProFile = Instance.new("ImageLabel")
+local UICorner_7 = Instance.new("UICorner")
+local FakeSetggie = Instance.new("ImageLabel")
+local UICorner_8 = Instance.new("UICorner")
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+function dragify(Frame, object)
+	dragToggle = nil
+	dragSpeed = .25
+	dragInput = nil
+	dragStart = nil
+	dragPos = nil
+	function updateInput(input)
+		Delta = input.Position - dragStart
+		Position =
+			UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+		game:GetService("TweenService"):Create(object, TweenInfo.new(dragSpeed), {Position = Position}):Play()
+	end
+	Frame.InputBegan:Connect(
+		function(input)
+			if
+				(input.UserInputType == Enum.UserInputType.MouseButton1 or
+					input.UserInputType == Enum.UserInputType.Touch)
+			then
+				dragToggle = true
+				dragStart = input.Position
+				startPos = object.Position
+				input.Changed:Connect(
+					function()
+						if (input.UserInputState == Enum.UserInputState.End) then
+							dragToggle = false
+						end
+					end
+				)
+			end
+		end
+	)
+	Frame.InputChanged:Connect(
+		function(input)
+			if
+				(input.UserInputType == Enum.UserInputType.MouseMovement or
+					input.UserInputType == Enum.UserInputType.Touch)
+			then
+				dragInput = input
+			end
+		end
+	)
+	game:GetService("UserInputService").InputChanged:Connect(
+	function(input)
+		if (input == dragInput and dragToggle) then
+			updateInput(input)
+		end
+	end
+	)
+end
+UIKAITUN.Name = "UIKAITUN"
+UIKAITUN.Parent = game.CoreGui
+UIKAITUN.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 MainFrame.Name = "MainFrame"
-MainFrame.Parent = Hee
-MainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+MainFrame.Parent = UIKAITUN
+MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.BackgroundTransparency = 0.800
 MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame.BorderSizePixel = 0
-MainFrame.Position = UDim2.new(1.93613982, 0, -2.04011512, 0)
-MainFrame.Size = UDim2.new(8.11159039, 0, 5.97306728, 0)
+MainFrame.Position = UDim2.new(0.214891151, 0, -0.0250696372, 0)
+MainFrame.Size = UDim2.new(0.588776708, 0, 0.879460096, 0)
 
-UICorner_2.Parent = MainFrame
+UICorner.CornerRadius = UDim.new(0, 11)
+UICorner.Parent = MainFrame
 
-MainNew.Name = "MainNew"
-MainNew.Parent = MainFrame
-MainNew.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-MainNew.BackgroundTransparency = 1.000
-MainNew.BorderColor3 = Color3.fromRGB(0, 0, 0)
-MainNew.BorderSizePixel = 0
-MainNew.Position = UDim2.new(0.0120739266, 0, -1.29001947e-08, 0)
-MainNew.Size = UDim2.new(0.10451857, 0, 0.151118219, 0)
-MainNew.Image = "http://www.roblox.com/asset/?id=16663324629"
+ToFrame.Name = "ToFrame"
+ToFrame.Parent = MainFrame
+ToFrame.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+ToFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ToFrame.BorderSizePixel = 0
+ToFrame.Position = UDim2.new(0.023108054, 0, 0.0221711118, 0)
+ToFrame.Size = UDim2.new(0.619434893, 0, 0.934626102, 0)
+
+UICorner_2.CornerRadius = UDim.new(0, 10)
+UICorner_2.Parent = ToFrame
+
+SeaFrame.Name = "SeaFrame"
+SeaFrame.Parent = ToFrame
+SeaFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+SeaFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SeaFrame.BorderSizePixel = 0
+SeaFrame.Position = UDim2.new(0.036066927, 0, 0.0372772813, 0)
+SeaFrame.Size = UDim2.new(0.927149177, 0, 0.101665311, 0)
+
+UICorner_3.CornerRadius = UDim.new(0, 50)
+UICorner_3.Parent = SeaFrame
+
+NameHub.Name = "NameHub"
+NameHub.Parent = SeaFrame
+NameHub.BackgroundColor3 = Color3.fromRGB(255, 85, 127)
+NameHub.BorderColor3 = Color3.fromRGB(0, 0, 0)
+NameHub.BorderSizePixel = 0
+NameHub.Position = UDim2.new(0.321676373, 0, 0.100000001, 0)
+NameHub.Size = UDim2.new(0.356336534, 0, 0.800000012, 0)
+NameHub.Font = Enum.Font.SourceSans
+NameHub.Text = "Attack Hub"
+NameHub.TextColor3 = Color3.fromRGB(255, 255, 255)
+NameHub.TextScaled = true
+NameHub.TextSize = 14.000
+NameHub.TextWrapped = true
+
+UICorner_4.CornerRadius = UDim.new(0, 50)
+UICorner_4.Parent = NameHub
+
+MenuFrame.Name = "MenuFrame"
+MenuFrame.Parent = ToFrame
+MenuFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+MenuFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MenuFrame.BorderSizePixel = 0
+MenuFrame.Position = UDim2.new(0.0360668562, 0, 0.186386406, 0)
+MenuFrame.Size = UDim2.new(0.927149296, 0, 0.781601489, 0)
+
+UICorner_5.CornerRadius = UDim.new(0, 11)
+UICorner_5.Parent = MenuFrame
 
 Name.Name = "Name"
-Name.Parent = MainFrame
+Name.Parent = MenuFrame
 Name.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Name.BackgroundTransparency = 1.000
 Name.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Name.BorderSizePixel = 0
-Name.Position = UDim2.new(0.148911476, 0, 0.0236719605, 0)
-Name.Size = UDim2.new(0.691174388, 0, 0.100000001, 0)
-Name.Font = Enum.Font.FredokaOne
-Name.Text = "Attack Hub"
-Name.TextColor3 = Color3.fromRGB(0, 255, 0)
-Name.TextSize = 50.000
-Name.TextWrapped = true
+Name.Position = UDim2.new(0.0482834093, 0, 0.0520292297, 0)
+Name.Size = UDim2.new(0.482834101, 0, 0.130073071, 0)
+Name.Font = Enum.Font.SourceSans
+Name.Text = "Name : "..game.Players.LocalPlayer.Name
+Name.TextColor3 = Color3.fromRGB(255, 255, 255)
+Name.TextSize = 15.000
+Name.TextXAlignment = Enum.TextXAlignment.Left
 
-FRA.Name = "FRA"
-FRA.Parent = MainFrame
-FRA.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-FRA.BorderColor3 = Color3.fromRGB(0, 0, 0)
-FRA.BorderSizePixel = 0
-FRA.Position = UDim2.new(0.129455656, 0, 0.170033261, 0)
-FRA.Size = UDim2.new(0.870544255, 0, 0.826584995, 0)
+Lv.Name = "Lv"
+Lv.Parent = MenuFrame
+Lv.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Lv.BackgroundTransparency = 1.000
+Lv.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Lv.BorderSizePixel = 0
+Lv.Position = UDim2.new(0.0482834093, 0, 0.182102308, 0)
+Lv.Size = UDim2.new(0.482834101, 0, 0.130073071, 0)
+Lv.Font = Enum.Font.SourceSans
+Lv.Text = "Level Wa : "..game:GetService("Players").LocalPlayer.Data.Level.Value
+Lv.TextColor3 = Color3.fromRGB(255, 255, 255)
+Lv.TextSize = 15.000
+Lv.TextXAlignment = Enum.TextXAlignment.Left
 
-Tap1.Name = "Tap1"
-Tap1.Parent = MainFrame
-Tap1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Tap1.BackgroundTransparency = 1.000
-Tap1.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Tap1.BorderSizePixel = 0
-Tap1.Position = UDim2.new(0.0120738959, 0, 0.226574481, 0)
-Tap1.Size = UDim2.new(0.100000001, 0, 0.154522374, 0)
-Tap1.Image = "rbxassetid://7040391851"
+RACE.Name = "RACE"
+RACE.Parent = MenuFrame
+RACE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+RACE.BackgroundTransparency = 1.000
+RACE.BorderColor3 = Color3.fromRGB(0, 0, 0)
+RACE.BorderSizePixel = 0
+RACE.Position = UDim2.new(0.0482834093, 0, 0.316511154, 0)
+RACE.Size = UDim2.new(0.482834101, 0, 0.130073071, 0)
+RACE.Font = Enum.Font.SourceSans
+RACE.Text = "Race : "..game:GetService("Players").LocalPlayer.Data.Race.Value
+RACE.TextColor3 = Color3.fromRGB(255, 255, 255)
+RACE.TextSize = 15.000
+RACE.TextXAlignment = Enum.TextXAlignment.Left
 
-UICorner_3.Parent = Tap1
+BELI.Name = "BELI"
+BELI.Parent = MenuFrame
+BELI.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BELI.BackgroundTransparency = 1.000
+BELI.BorderColor3 = Color3.fromRGB(0, 0, 0)
+BELI.BorderSizePixel = 0
+BELI.Position = UDim2.new(0.0482834093, 0, 0.459591538, 0)
+BELI.Size = UDim2.new(0.482834101, 0, 0.130073071, 0)
+BELI.Font = Enum.Font.SourceSans
+BELI.Text = "Beli : "..game:GetService("Players").LocalPlayer.Data.Beli.Value
+BELI.TextColor3 = Color3.fromRGB(255, 255, 255)
+BELI.TextSize = 15.000
+BELI.TextXAlignment = Enum.TextXAlignment.Left
 
-Page1.Name = "Page1"
-Page1.Parent = MainFrame
-Page1.Active = true
-Page1.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-Page1.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Page1.BorderSizePixel = 0
-Page1.Position = UDim2.new(0.129455686, 0, 0.170033291, 0)
-Page1.Size = UDim2.new(0.870544314, 0, 0.829966784, 0)
+Health.Name = "Health"
+Health.Parent = MenuFrame
+Health.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Health.BackgroundTransparency = 1.000
+Health.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Health.BorderSizePixel = 0
+Health.Position = UDim2.new(0.0482834093, 0, 0.576657295, 0)
+Health.Size = UDim2.new(0.482834101, 0, 0.130073071, 0)
+Health.Font = Enum.Font.SourceSans
+Health.Text = "Health : "..game.Players.LocalPlayer.Character.Humanoid.Health
+Health.TextColor3 = Color3.fromRGB(255, 255, 255)
+Health.TextSize = 15.000
+Health.TextXAlignment = Enum.TextXAlignment.Left
 
-Toggle1.Name = "Toggle1"
-Toggle1.Parent = Page1
-Toggle1.BackgroundColor3 = Color3.fromRGB(102, 102, 102)
-Toggle1.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Toggle1.BorderSizePixel = 0
-Toggle1.Position = UDim2.new(0.0208040718, 0, 0.108464301, 0)
-Toggle1.Size = UDim2.new(0.887488067, 0, -0.0688038841, 0)
-Toggle1.Font = Enum.Font.SourceSansSemibold
-Toggle1.LineHeight = 3.000
-Toggle1.Text = "Auto Farm Lv"
-Toggle1.TextColor3 = Color3.fromRGB(255, 255, 255)
-Toggle1.TextSize = 30.000
-Toggle1.TextWrapped = true
-Toggle1.TextXAlignment = Enum.TextXAlignment.Left
+ReFrame.Name = "ReFrame"
+ReFrame.Parent = MainFrame
+ReFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+ReFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ReFrame.BorderSizePixel = 0
+ReFrame.Position = UDim2.new(0.670446157, 0, 0.0221711118, 0)
+ReFrame.Size = UDim2.new(0.307331592, 0, 0.465525299, 0)
 
-Frame.Parent = Toggle1
-Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.867336571, 0, 0.957378685, 0)
-Frame.Size = UDim2.new(0.107416555, 0, -0.929860651, 0)
+UICorner_6.CornerRadius = UDim.new(0, 11)
+UICorner_6.Parent = ReFrame
 
-Toggle1_2.Name = "Toggle1"
-Toggle1_2.Parent = Toggle1
-Toggle1_2.BackgroundColor3 = Color3.fromRGB(102, 102, 102)
-Toggle1_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Toggle1_2.BorderSizePixel = 0
-Toggle1_2.Position = UDim2.new(-1.58973009e-07, 0, 3.74984495e-07, 0)
-Toggle1_2.Size = UDim2.new(1.00000036, 0, 0.972481012, 0)
-Toggle1_2.Visible = false
-Toggle1_2.Font = Enum.Font.SourceSans
-Toggle1_2.Text = "Auto Farm Lv"
-Toggle1_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-Toggle1_2.TextSize = 30.000
-Toggle1_2.TextXAlignment = Enum.TextXAlignment.Left
+ImageLabel.Parent = ReFrame
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Position = UDim2.new(0, 0, 0.0748408213, 0)
+ImageLabel.Size = UDim2.new(1.00000024, 0, 0.843030632, 0)
+ImageLabel.Image = "rbxassetid://16663324629"
 
-Frame_2.Parent = Toggle1_2
-Frame_2.BackgroundColor3 = Color3.fromRGB(0, 200, 255)
-Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame_2.BorderSizePixel = 0
-Frame_2.Position = UDim2.new(0.866999984, 0, 0.957000017, 0)
-Frame_2.Size = UDim2.new(0.107000001, 0, -0.930000007, 0)
+ProFile.Name = "ProFile"
+ProFile.Parent = MainFrame
+ProFile.BackgroundColor3 = Color3.fromRGB(173, 58, 87)
+ProFile.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ProFile.BorderSizePixel = 0
+ProFile.Position = UDim2.new(0.670131505, 0, 0.522604764, 0)
+ProFile.Size = UDim2.new(0.307646304, 0, 0.434192419, 0)
+ProFile.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. game.Players.LocalPlayer.UserId .. "&width=420&height=420&format=png"
 
-Hum.Name = "Hum"
-Hum.Parent = MainFrame
-Hum.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Hum.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Hum.BorderSizePixel = 0
-Hum.Position = UDim2.new(-0.238688082, 0, 0.34663415, 0)
-Hum.Size = UDim2.new(0.123280391, 0, 0.162336409, 0)
-Hum.Font = Enum.Font.SourceSans
-Hum.Text = ""
-Hum.TextColor3 = Color3.fromRGB(0, 0, 0)
-Hum.TextSize = 14.000
+UICorner_7.Parent = ProFile
 
-UICorner_4.Parent = Hum
+FakeSetggie.Name = "FakeSetggie"
+FakeSetggie.Parent = ProFile
+FakeSetggie.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+FakeSetggie.BorderColor3 = Color3.fromRGB(0, 0, 0)
+FakeSetggie.BorderSizePixel = 0
+FakeSetggie.Position = UDim2.new(0.05257852, 0, 0.0510628708, 0)
+FakeSetggie.Size = UDim2.new(0.199314073, 0, 0.16850251, 0)
+FakeSetggie.Image = "rbxassetid://16162323955"
 
--- Scripts:
-
-local function JAHECFZ_fake_script() -- Toggle1_2.LocalScript 
-	local script = Instance.new('LocalScript', Toggle1_2)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Parent.Toggle1.Visible = false
-	end)
-end
-coroutine.wrap(JAHECFZ_fake_script)()
-local function PLMYIQZ_fake_script() -- Toggle1.LocalScript 
-	local script = Instance.new('LocalScript', Toggle1)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		script.Parent.Toggle1.Visible = true
-	end)
-end
-coroutine.wrap(PLMYIQZ_fake_script)()
-local function HYNOC_fake_script() -- Hum.LocalScript 
-	local script = Instance.new('LocalScript', Hum)
-
-	function Hum ()
-		script.Parent.Parent.Parent.MainFrame.Visible = false
-	end
-	script.Parent.MouseButton1Click:Connect(Hum)
-end
-coroutine.wrap(HYNOC_fake_script)()
-local function HZNLGGX_fake_script() -- Hee.LocalScript 
-	local script = Instance.new('LocalScript', Hee)
-
-	function Hee ()
-		script.Parent.MainFrame.Visible = true
-	end
-	script.Parent.MouseButton1Click:Connect(Hee)
-end
-coroutine.wrap(HZNLGGX_fake_script)()
-
-Toggle1.MouseButton1Down(function()
-	
-end)
+UICorner_8.CornerRadius = UDim.new(0, 50)
+UICorner_8.Parent = FakeSetggie
